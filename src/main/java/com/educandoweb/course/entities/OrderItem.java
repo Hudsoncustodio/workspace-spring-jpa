@@ -1,13 +1,16 @@
 package com.educandoweb.course.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import com.educandoweb.course.entities.pk.OrderItemPK;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,7 +22,7 @@ public class OrderItem implements Serializable{
 	private OrderItemPK id = new OrderItemPK();
 	
 	private Integer quantity;
-	private Double price;
+	private Double price;	
 	
 	public OrderItem() {
 	}	
@@ -37,10 +40,10 @@ public class OrderItem implements Serializable{
 		return id.getOrder();
 	}
 	
-	public void serOrder(Order order) {
+	public void setOrder(Order order) {
 		id.setOrder(order);
 	}
-	
+		
 	public Product getProduct() {
 		return id.getProduct();
 	}
